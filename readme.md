@@ -37,8 +37,8 @@ Deno.test(
 );
 ```
 
-Put that in `/test` then run `deno test -A`, Install Chromium with the provided
-script if it asks.
+Put that in `/test/puppet.js` then run `deno test -A`, Install Chromium with the
+provided script if it asks.
 
 # Install
 
@@ -50,7 +50,7 @@ Even better install it something like this:
     "@/": "./",
     "$std/": "https://deno.land/std@0.178.0/",
     "marionette": "https://deno.land/x/fresh_marionette@v1.1.0/mod.js",
-    "puppeteer": "https://deno.land/x/puppeteer@16.2.0/mod.ts",
+    // ...
   }
 }
 ```
