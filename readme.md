@@ -54,7 +54,7 @@ Even better install it something like this:
   "imports": {
     "@/": "./",
     "$std/": "https://deno.land/std@0.178.0/",
-    "marionette": "https://deno.land/x/fresh_marionette@v1.1.0/mod.js",
+    "fresh_marionette": "https://deno.land/x/fresh_marionette@v1.1.0/mod.js",
     // ...
   }
 }
