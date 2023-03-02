@@ -1,13 +1,6 @@
 import puppeteer from "https://deno.land/x/puppeteer@16.2.0/mod.ts";
 import { readLines } from "https://deno.land/std@0.178.0/io/read_lines.ts";
 import { delay } from "https://deno.land/std@0.178.0/async/delay.ts";
-// import { DENO_ENV } from "@/utils/config.js"
-
-const DENO_ENV = Deno.env.get("DENO_ENV") || "development";
-
-const puppet_config = DENO_ENV === "development"
-  ? { headless: false, defaultViewport: null }
-  : { headless: true };
 
 const startFresh = async () => {
   const serverProcess = Deno.run({
@@ -42,9 +35,9 @@ export const freshTestWrapper = (theTests) => async (t) => {
   stopFresh(serverProcess);
 };
 
-export const freshPuppetTestWrapper = (theTests) =>
+export const freshPuppetTestWrapper = (puppetConfig, theTests) =>
   freshTestWrapper(async (t) => {
-    const browser = await puppeteer.launch(puppet_config);
+    const browser = await puppeteer.launch(puppetConfig);
     const page = await browser.newPage();
     await delay(100);
     await theTests(t, page);

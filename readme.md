@@ -4,15 +4,20 @@ A really simple test wrapper for Fresh projects. Use it like this:
 
 ```
 import { assertEquals } from "https://deno.land/std@0.178.0/testing/asserts.ts";
-import { freshPuppetTestWrapper } from "https://deno.land/x/fresh_marionette@v1.0.2/mod.js";
+import { freshPuppetTestWrapper } from "https://deno.land/x/fresh_marionette@v1.1.0/mod.js";
 
-// import { BASE_URL } from "@/utils/config.js"
+// import { BASE_URL, DENO_ENV } from "@/utils/config.js"
 
 const BASE_URL = Deno.env.get("BASE_URL") || "http://localhost:8000";
+const DENO_ENV = Deno.env.get("DENO_ENV") || "development";
+
+const puppet_config = DENO_ENV === "development"
+  ? { headless: false, defaultViewport: null }
+  : { headless: true };
 
 Deno.test(
   "Public Pages Testing",
-  freshPuppetTestWrapper(async (t, page) => {
+  freshPuppetTestWrapper(puppet_config, async (t, page) => {
     await t.step("The homepage should work", async () => {
       const response = await page.goto(`${BASE_URL}`, {
         waitUntil: "networkidle2",
@@ -44,7 +49,7 @@ Even better install it something like this:
   "imports": {
     "@/": "./",
     "$std/": "https://deno.land/std@0.178.0/",
-    "marionette": "https://deno.land/x/fresh_marionette@v1.0.2/mod.js",
+    "marionette": "https://deno.land/x/fresh_marionette@v1.1.0/mod.js",
     "puppeteer": "https://deno.land/x/puppeteer@16.2.0/mod.ts",
   }
 }
