@@ -2,7 +2,7 @@
 
 A really simple test wrapper for Fresh projects. Use it like this:
 
-```
+```node
 import { assertEquals } from "https://deno.land/std@0.178.0/testing/asserts.ts";
 import { freshPuppetTestWrapper } from "https://deno.land/x/fresh_marionette@v1.1.0/mod.js";
 
@@ -44,7 +44,7 @@ script if it asks.
 
 Even better install it something like this:
 
-```
+```node
 {
   "imports": {
     "@/": "./",
@@ -57,7 +57,7 @@ Even better install it something like this:
 
 then
 
-```
+```node
 import { assertEquals } from "$std/testing/asserts.ts";
 import { freshPuppetTestWrapper } from "marionette";
 ```
@@ -65,6 +65,12 @@ import { freshPuppetTestWrapper } from "marionette";
 ### Also
 
 (Launch tests with VSCode)[https://youtu.be/OG77NdqL164]
+
+### Use with Github Actions
+
+Example in this repo: https://github.com/Hyprtxt/marionette.deno.dev
+
+https://github.com/Hyprtxt/marionette.deno.dev/actions
 
 # License
 
