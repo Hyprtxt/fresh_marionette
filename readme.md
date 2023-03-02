@@ -4,7 +4,7 @@ A really simple test wrapper for Fresh projects. Use it like this:
 
 ```
 import { assertEquals } from "https://deno.land/std@0.178.0/testing/asserts.ts";
-import { freshPuppetTestWrapper } from "https://deno.land/x/fresh_marionette@v1.0.0/mod.js";
+import { freshPuppetTestWrapper } from "https://deno.land/x/fresh_marionette@v1.0.2/mod.js";
 
 // import { BASE_URL } from "@/utils/config.js"
 
@@ -32,23 +32,30 @@ Deno.test(
 );
 ```
 
+Put that in `/test` then run `deno test -A`, Install Chromium with the provided
+script if it asks.
+
 # Install
 
-Even better install it like this:
+Even better install it something like this:
 
 ```
 {
   "imports": {
     "@/": "./",
-    "$marionette": "https://deno.land/x/fresh_marionette@v1.0.0/mod.js",
     "$std/": "https://deno.land/std@0.178.0/",
+    "marionette": "https://deno.land/x/fresh_marionette@v1.0.2/mod.js",
     "puppeteer": "https://deno.land/x/puppeteer@16.2.0/mod.ts",
   }
 }
 ```
 
-Put that in `/test` then run `deno test -A`, Install Chromium with the provided
-script if it asks.
+then
+
+```
+import { assertEquals } from "$std/testing/asserts.ts";
+import { freshPuppetTestWrapper } from "marionette";
+```
 
 ### Also
 

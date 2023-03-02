@@ -1,6 +1,6 @@
-import puppeteer from "puppeteer";
-import { readLines } from "$std/io/read_lines.ts";
-import { delay } from "$std/async/delay.ts";
+import puppeteer from "https://deno.land/x/puppeteer@16.2.0/mod.ts";
+import { readLines } from "https://deno.land/std@0.178.0/io/read_lines.ts";
+import { delay } from "https://deno.land/std@0.178.0/async/delay.ts";
 // import { DENO_ENV } from "@/utils/config.js"
 
 const DENO_ENV = Deno.env.get("DENO_ENV") || "development";
