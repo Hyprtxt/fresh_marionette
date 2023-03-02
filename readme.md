@@ -1,6 +1,11 @@
 # Fresh Marionette
 
-A really simple test wrapper for Fresh projects. Use it like this:
+A really simple test wrapper for Fresh projects.
+
+With this you can [Launch tests with VSCode](https://youtu.be/OG77NdqL164) -
+https://youtu.be/OG77NdqL164
+
+Use it like this:
 
 ```node
 import { assertEquals } from "https://deno.land/std@0.178.0/testing/asserts.ts";
@@ -61,10 +66,6 @@ then
 import { assertEquals } from "$std/testing/asserts.ts";
 import { freshPuppetTestWrapper } from "marionette";
 ```
-
-### Also
-
-(Launch tests with VSCode)[https://youtu.be/OG77NdqL164]
 
 ### Use with Github Actions
 
