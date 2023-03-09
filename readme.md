@@ -9,7 +9,7 @@ Use it like this:
 
 ```node
 import { assertEquals } from "https://deno.land/std@0.178.0/testing/asserts.ts";
-import { freshPuppetTestWrapper } from "https://deno.land/x/fresh_marionette@v1.1.0/mod.js";
+import { freshPuppetTestWrapper } from "https://deno.land/x/fresh_marionette@v1.1.1/mod.js";
 
 // import { BASE_URL, DENO_ENV } from "@/utils/config.js"
 
@@ -54,7 +54,7 @@ Even better install it something like this:
   "imports": {
     "@/": "./",
     "$std/": "https://deno.land/std@0.178.0/",
-    "fresh_marionette": "https://deno.land/x/fresh_marionette@v1.1.0/mod.js",
+    "fresh_marionette": "https://deno.land/x/fresh_marionette@v1.1.1/mod.js",
     // ...
   }
 }
@@ -72,6 +72,32 @@ import { freshPuppetTestWrapper } from "marionette";
 Example in this repo: https://github.com/Hyprtxt/marionette.deno.dev
 
 https://github.com/Hyprtxt/marionette.deno.dev/actions
+
+### Use without Puppeteer
+
+The test runner can be user without puppeteer, just import `freshTestWrapper`
+
+```javascript
+import { assertEquals } from "https://deno.land/std@0.177.0/testing/asserts.ts";
+import { freshTestWrapper } from "https://deno.land/x/fresh_marionette@v1.1.1/mod.js";
+
+Deno.test(
+  "Some Testing",
+  freshTestWrapper(async (t) => {
+    // fresh has been started
+    await t.step("The homepage should work (200)", async () => {
+      const requestStatus = await fetch(`http://localhost:8000`).then(
+        async (res) => {
+          await res.text();
+          return res.status;
+        },
+      );
+      assertEquals(requestStatus, 200);
+    });
+    // all done? Fresh will close gracefully
+  }),
+);
+```
 
 # License
 
