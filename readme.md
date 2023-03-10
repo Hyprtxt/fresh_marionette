@@ -7,7 +7,7 @@ https://youtu.be/OG77NdqL164
 
 Use it like this:
 
-```node
+```ts
 import { assertEquals } from "https://deno.land/std@0.178.0/testing/asserts.ts";
 import { freshPuppetTestWrapper } from "https://deno.land/x/fresh_marionette@v1.1.1/mod.js";
 
@@ -49,7 +49,7 @@ provided script if it asks.
 
 Even better install it something like this:
 
-```node
+```ts
 {
   "imports": {
     "@/": "./",
@@ -62,7 +62,7 @@ Even better install it something like this:
 
 then
 
-```node
+```ts
 import { assertEquals } from "$std/testing/asserts.ts";
 import { freshPuppetTestWrapper } from "marionette";
 ```
@@ -77,7 +77,7 @@ https://github.com/Hyprtxt/marionette.deno.dev/actions
 
 The test runner can be user without puppeteer, just import `freshTestWrapper`
 
-```javascript
+```ts
 import { assertEquals } from "https://deno.land/std@0.177.0/testing/asserts.ts";
 import { freshTestWrapper } from "https://deno.land/x/fresh_marionette@v1.1.1/mod.js";
 
