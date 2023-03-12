@@ -2,8 +2,9 @@
 
 A really simple test wrapper for Fresh projects.
 
-With this you can [Launch tests with VSCode](https://youtu.be/OG77NdqL164) -
-https://youtu.be/OG77NdqL164
+With this you can
+[Launch tests with VSCode - https://youtu.be/OG77NdqL164](https://youtu.be/OG77NdqL164)
+or ya know... `deno test -A`
 
 Use it like this:
 
@@ -75,7 +76,7 @@ https://github.com/Hyprtxt/marionette.deno.dev/actions
 
 ### Use without Puppeteer
 
-The test runner can be user without puppeteer, just import `freshTestWrapper`
+The test runner can be used without puppeteer, just import `freshTestWrapper`
 
 ```ts
 import { assertEquals } from "https://deno.land/std@0.177.0/testing/asserts.ts";
