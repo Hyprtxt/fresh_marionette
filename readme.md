@@ -9,8 +9,8 @@ or ya know... `deno test -A`
 Use it like this:
 
 ```ts
-import { assertEquals } from "https://deno.land/std@0.178.0/testing/asserts.ts";
-import { freshPuppetTestWrapper } from "https://deno.land/x/fresh_marionette@v1.1.1/mod.js";
+import { assertEquals } from "https://deno.land/std@0.180.0/testing/asserts.ts";
+import { freshPuppetTestWrapper } from "https://deno.land/x/fresh_marionette@v1.1.2/mod.js";
 
 // import { BASE_URL, DENO_ENV } from "@/utils/config.js"
 
@@ -54,8 +54,8 @@ Even better install it something like this:
 {
   "imports": {
     "@/": "./",
-    "$std/": "https://deno.land/std@0.178.0/",
-    "fresh_marionette": "https://deno.land/x/fresh_marionette@v1.1.1/mod.js",
+    "$std/": "https://deno.land/std@0.180.0/",
+    "fresh_marionette": "https://deno.land/x/fresh_marionette@v1.1.2/mod.js",
     // ...
   }
 }
@@ -65,7 +65,7 @@ then
 
 ```ts
 import { assertEquals } from "$std/testing/asserts.ts";
-import { freshPuppetTestWrapper } from "marionette";
+import { freshPuppetTestWrapper } from "fresh_marionette";
 ```
 
 ### Use with Github Actions
@@ -79,8 +79,8 @@ https://github.com/Hyprtxt/marionette.deno.dev/actions
 The test runner can be used without puppeteer, just import `freshTestWrapper`
 
 ```ts
-import { assertEquals } from "https://deno.land/std@0.177.0/testing/asserts.ts";
-import { freshTestWrapper } from "https://deno.land/x/fresh_marionette@v1.1.1/mod.js";
+import { assertEquals } from "https://deno.land/std@0.180.0/testing/asserts.ts";
+import { freshTestWrapper } from "https://deno.land/x/fresh_marionette@v1.1.2/mod.js";
 
 Deno.test(
   "Some Testing",
