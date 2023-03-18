@@ -10,6 +10,7 @@ Use it like this:
 
 ```ts
 import { assertEquals } from "https://deno.land/std@0.180.0/testing/asserts.ts";
+import { Status } from "https://deno.land/std@0.180.0/http/http_status.ts";
 import { freshPuppetTestWrapper } from "https://deno.land/x/fresh_marionette@v1.1.2/mod.js";
 
 // import { BASE_URL, DENO_ENV } from "@/utils/config.js"
@@ -28,14 +29,14 @@ Deno.test(
       const response = await page.goto(`${BASE_URL}`, {
         waitUntil: "networkidle2",
       });
-      assertEquals(response.status(), 200);
+      assertEquals(response.status(), Status.OK);
     });
 
     await t.step("The 404 page should 404", async () => {
       const response = await page.goto(`${BASE_URL}/404`, {
         waitUntil: "networkidle2",
       });
-      assertEquals(response.status(), 404);
+      assertEquals(response.status(), Status.NotFound);
     });
 
     // More steps?
@@ -80,6 +81,7 @@ The test runner can be used without puppeteer, just import `freshTestWrapper`
 
 ```ts
 import { assertEquals } from "https://deno.land/std@0.180.0/testing/asserts.ts";
+import { Status } from "https://deno.land/std@0.180.0/http/http_status.ts";
 import { freshTestWrapper } from "https://deno.land/x/fresh_marionette@v1.1.2/mod.js";
 
 Deno.test(
@@ -93,7 +95,7 @@ Deno.test(
           return res.status;
         },
       );
-      assertEquals(requestStatus, 200);
+      assertEquals(requestStatus, Status.OK);
     });
     // all done? Fresh will close gracefully
   }),
