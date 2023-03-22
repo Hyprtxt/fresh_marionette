@@ -1,7 +1,0 @@
-{
-  "imports": {
-    "@/": "./",
-    "$std/": "https://deno.land/std@0.180.0/",
-    "puppeteer": "https://deno.land/x/puppeteer@16.2.0/mod.ts"
-  }
-}

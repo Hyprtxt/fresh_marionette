@@ -1,6 +1,6 @@
 import puppeteer from "https://deno.land/x/puppeteer@16.2.0/mod.ts";
-import { readLines } from "https://deno.land/std@0.178.0/io/read_lines.ts";
-import { delay } from "https://deno.land/std@0.178.0/async/delay.ts";
+import { readLines } from "https://deno.land/std@0.180.0/io/read_lines.ts";
+import { delay } from "https://deno.land/std@0.180.0/async/delay.ts";
 
 const startFresh = async () => {
   const serverProcess = Deno.run({

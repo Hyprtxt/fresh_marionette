@@ -49,7 +49,7 @@ provided script if it asks.
 
 # Install
 
-Even better install it something like this:
+Even better, you may install it something like this:
 
 ```ts
 {
@@ -66,6 +66,7 @@ then
 
 ```ts
 import { assertEquals } from "$std/testing/asserts.ts";
+import { Status } from "$std/http/http_status.ts";
 import { freshPuppetTestWrapper } from "fresh_marionette";
 ```
 
