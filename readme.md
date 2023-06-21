@@ -9,9 +9,9 @@ or ya know... `deno test -A`
 Use it like this:
 
 ```ts
-import { assertEquals } from "https://deno.land/std@0.180.0/testing/asserts.ts";
-import { Status } from "https://deno.land/std@0.180.0/http/http_status.ts";
-import { freshPuppetTestWrapper } from "https://deno.land/x/fresh_marionette@v1.1.2/mod.js";
+import { assertEquals } from "https://deno.land/std@0.192.0/testing/asserts.ts";
+import { Status } from "https://deno.land/std@0.192.0/http/http_status.ts";
+import { freshPuppetTestWrapper } from "https://deno.land/x/fresh_marionette@v2.0.0/mod.js";
 
 // import { BASE_URL, DENO_ENV } from "@/utils/config.js"
 
@@ -24,6 +24,10 @@ const puppet_config = DENO_ENV === "development"
 
 Deno.test(
   "Public Pages Testing",
+  {
+    sanitizeResources: false,
+    sanitizeOps: false,
+  },
   freshPuppetTestWrapper(puppet_config, async (t, page) => {
     await t.step("The homepage should work", async () => {
       const response = await page.goto(`${BASE_URL}`, {
@@ -55,8 +59,8 @@ Even better, you may install it something like this:
 {
   "imports": {
     "@/": "./",
-    "$std/": "https://deno.land/std@0.180.0/",
-    "fresh_marionette": "https://deno.land/x/fresh_marionette@v1.1.2/mod.js",
+    "$std/": "https://deno.land/std@0.192.0/",
+    "fresh_marionette": "https://deno.land/x/fresh_marionette@v2.0.0/mod.js",
     // ...
   }
 }
@@ -81,12 +85,15 @@ https://github.com/Hyprtxt/marionette.deno.dev/actions
 The test runner can be used without puppeteer, just import `freshTestWrapper`
 
 ```ts
-import { assertEquals } from "https://deno.land/std@0.180.0/testing/asserts.ts";
-import { Status } from "https://deno.land/std@0.180.0/http/http_status.ts";
-import { freshTestWrapper } from "https://deno.land/x/fresh_marionette@v1.1.2/mod.js";
+import { assertEquals } from "https://deno.land/std@0.192.0/testing/asserts.ts";
+import { Status } from "https://deno.land/std@0.192.0/http/http_status.ts";
+import { freshTestWrapper } from "https://deno.land/x/fresh_marionette@v2.0.0/mod.js";
 
 Deno.test(
   "Some Testing",
+  {
+    sanitizeResources: false,
+  },
   freshTestWrapper(async (t) => {
     // fresh has been started
     await t.step("The homepage should work (200)", async () => {
@@ -102,6 +109,15 @@ Deno.test(
   }),
 );
 ```
+
+# Version 2 Update
+
+`startFreshServer` is now a part of Fresh's test utils
+
+This package has been updated to use startFreshServer. If you need custom server
+options, I recommend copying pasting what you need from mod.js.
+
+`import { startFreshServer } from "https://deno.land/x/fresh@1.2.0/tests/test_utils.ts";`
 
 # License
 
