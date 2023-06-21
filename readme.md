@@ -4,14 +4,14 @@ A really simple test wrapper for Fresh projects.
 
 With this you can
 [Launch tests with VSCode - https://youtu.be/OG77NdqL164](https://youtu.be/OG77NdqL164)
-or ya know... `deno test -A`
+or `deno test -A` the regualar Deno test stuff.
 
 Use it like this:
 
 ```ts
 import { assertEquals } from "https://deno.land/std@0.192.0/testing/asserts.ts";
 import { Status } from "https://deno.land/std@0.192.0/http/http_status.ts";
-import { freshPuppetTestWrapper } from "https://deno.land/x/fresh_marionette@v2.0.0/mod.js";
+import { freshPuppetTestWrapper } from "https://deno.land/x/fresh_marionette@v2.0.1/mod.js";
 
 // import { BASE_URL, DENO_ENV } from "@/utils/config.js"
 
@@ -48,19 +48,19 @@ Deno.test(
 );
 ```
 
-Put that in `/test/puppet.js` then run `deno test -A test/puppet.js`, Install
+Put that in a file called `./main_test.js`, then run `deno test -A`, Install
 Chromium with the provided script if it asks.
 
 # Install
 
-Even better, you may install it something like this:
+You may install it something like this:
 
 ```ts
 {
   "imports": {
     "@/": "./",
     "$std/": "https://deno.land/std@0.192.0/",
-    "fresh_marionette": "https://deno.land/x/fresh_marionette@v2.0.0/mod.js",
+    "fresh_marionette": "https://deno.land/x/fresh_marionette@v2.0.1/mod.js",
     // ...
   }
 }
@@ -80,48 +80,23 @@ Example in this repo: https://github.com/Hyprtxt/marionette.deno.dev
 
 https://github.com/Hyprtxt/marionette.deno.dev/actions
 
-### Use without Puppeteer
-
-The test runner can be used without puppeteer, just import `freshTestWrapper`
-
-```ts
-import { assertEquals } from "https://deno.land/std@0.192.0/testing/asserts.ts";
-import { Status } from "https://deno.land/std@0.192.0/http/http_status.ts";
-import { freshTestWrapper } from "https://deno.land/x/fresh_marionette@v2.0.0/mod.js";
-
-Deno.test(
-  "Some Testing",
-  {
-    sanitizeResources: false,
-  },
-  freshTestWrapper(async (t) => {
-    // fresh has been started
-    await t.step("The homepage should work (200)", async () => {
-      const requestStatus = await fetch(`http://localhost:8000`).then(
-        async (res) => {
-          await res.text();
-          return res.status;
-        },
-      );
-      assertEquals(requestStatus, Status.OK);
-    });
-    // all done? Fresh will close gracefully
-  }),
-);
-```
-
 # Version 2 Update
 
 `startFreshServer` is now a part of Fresh's test utils
 
 This package has been updated to use startFreshServer. If you need custom server
-options, I recommend copying pasting what you need from mod.js.
+options, I recommend copying pasting what you need from
+[mod.js](https://deno.land/x/fresh_marionette@v2.0.1/mod.js?source).
 
 `import { startFreshServer } from "https://deno.land/x/fresh@1.2.0/tests/test_utils.ts";`
 
+Don't miss the examples in the docs:
+https://fresh.deno.dev/docs/examples/writing-tests If you don't need puppeteer
+there are faster ways to write tests.
+
 # License
 
-License © Taylor Young
+d License © Taylor Young
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
