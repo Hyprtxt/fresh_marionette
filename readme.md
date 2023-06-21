@@ -48,8 +48,8 @@ Deno.test(
 );
 ```
 
-Put that in `/test/puppet.js` then run `deno test -A`, Install Chromium with the
-provided script if it asks.
+Put that in `/test/puppet.js` then run `deno test -A test/puppet.js`, Install
+Chromium with the provided script if it asks.
 
 # Install
 
